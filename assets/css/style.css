@@ -1,173 +1,154 @@
-/* ===== БАЗОВІ СТИЛІ ===== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root{
+  --blue: #003B90;        /* замість --irish-green */
+  --yellow: #FFD000;      /* замість --irish-orange */
+  --white: #ffffff;
+  --bg: #fbfbfb;
+  --text: #222;
+  --muted: #666;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-family: "Inter", sans-serif;
 }
 
-body {
-    font-family: "Inter", Arial, sans-serif;
-    background: #f7f9fc;
-    color: #1c1c1c;
-    line-height: 1.6;
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  background:#fff;
+  color:var(--text);
+  font-size:16px;
 }
 
-/* ===== КОНТЕЙНЕР ===== */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 25px;
+.container{
+  width:980px;
+  margin:36px auto;
 }
 
-/* ===== ХЕДЕР ===== */
-.site-header {
-    background: #003B90; /* темний строгий синій */
-    color: white;
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-bottom: 4px solid #FFD000; /* жовта університетська лінія */
+a{text-decoration:none; color:inherit}
+
+/* ---------------- HEADER ---------------- */
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  background:white;
+  border-radius:14px;
+  box-shadow:var(--card-shadow);
 }
 
-.logo {
-    font-size: 1.45rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+/* Навігація */
+.nav{
+  display:flex;
+  gap:14px;
 }
 
-/* ===== МЕНЮ ===== */
-.main-nav {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+.nav a{
+  padding:8px 14px;
+  color:var(--muted);
+  border-radius:8px;
+  transition:.2s;
 }
 
-.main-nav a {
-    color: white;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: 0.25s;
+.nav a:hover{
+  color:var(--text);
 }
 
-.main-nav a:hover {
-    background: #FFD000; /* яскравий жовтий */
-    color: #1c1c1c;
+/* Активний пункт: синій → жовтий градієнт */
+.nav a.active{
+  background:linear-gradient(90deg,var(--blue),var(--yellow));
+  color:white;
 }
 
-.main-nav .active {
-    background: #FFD000;
-    color: #1c1c1c;
+/* ---------------- FLAG ---------------- */
+
+.flag{
+  width:44px;
+  height:28px;
+  border-radius:6px;
+  overflow:hidden;
+  display:flex;
 }
 
-/* ===== КАРТКИ ===== */
-.card {
-    background: white;
-    padding: 28px 32px;
-    border-radius: 16px;
-    margin-top: 25px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+.flag div{flex:1;}
+
+.flag .b{background:var(--blue)}
+.flag .w{background:var(--white)}
+.flag .y{background:var(--yellow)}
+
+/* ---------------- LAYOUT ---------------- */
+
+.hero{
+  margin-top:24px;
+  display:flex;
+  gap:20px;
 }
 
-.card h1, .card h2 {
-    margin-bottom: 12px;
+.left{flex:1;}
+.right{width:320px;}
+
+/* ---------------- CARDS ---------------- */
+
+.card{
+  background:white;
+  padding:16px;
+  border-radius:10px;
+  box-shadow:var(--card-shadow);
+  margin-bottom:14px;
 }
 
-.subtitle {
-    color: #555;
-    margin-bottom: 15px;
+.card h3{
+  margin-top:0;
+  color:var(--blue);
 }
 
-/* ===== ТАЙМЛАЙН ===== */
-.timeline {
-    border-left: 4px solid #003B90;
-    margin-top: 10px;
-    padding-left: 20px;
+/* ---------------- SKILLS ---------------- */
+
+.skill-list{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
 }
 
-.timeline-year {
-    font-weight: 700;
-    color: #003B90;
+.skill{
+  background:#f3f3f3;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:13px;
+  transition:.2s;
+  border-left:4px solid var(--blue);
 }
 
-/* ===== СІТКА ===== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+.skill:hover{
+  transform:translateY(-3px);
+  background:#eef3ff;
 }
 
-/* ===== СПИСКИ ===== */
-.info-list {
-    list-style: none;
+/* ---------------- TABLES ---------------- */
+
+.table{
+  width:100%;
+  border-collapse:collapse;
 }
 
-.info-list li {
-    margin-bottom: 8px;
+.table th,
+.table td{
+  padding:10px 12px;
+  border-bottom:1px solid #eee;
 }
 
-.tag-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+/* Заголовки таблиці: градієнт синій → жовтий */
+.table th{
+  background:linear-gradient(90deg,var(--blue),var(--yellow));
+  color:white;
 }
 
-.tag-list li {
-    background: #E9F0FF;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    border-left: 4px solid #003B90;
+/* ---------------- FOOTER ---------------- */
+
+.footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:24px;
+  padding:20px 0;
 }
 
-/* ===== ТАБЛИЦІ ===== */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-.data-table th {
-    background: #FFD000;
-    color: #1c1c1c;
-    padding: 10px;
-    text-align: left;
-    font-size: 1rem;
-}
-
-.data-table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    vertical-align: top;
-}
-
-.data-table tr:nth-child(even) {
-    background: #fafafa;
-}
-
-/* ===== ФУТЕР ===== */
-.site-footer {
-    background: #003B90;
-    color: white;
-    text-align: center;
-    padding: 18px;
-    margin-top: 50px;
-    border-top: 4px solid #FFD000;
-}
-
-/* ===== АДАПТИВ ===== */
-@media (max-width: 800px) {
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    .main-nav {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-}
